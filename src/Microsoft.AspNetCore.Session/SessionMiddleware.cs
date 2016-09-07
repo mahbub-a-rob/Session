@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.Internal;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -145,7 +146,7 @@ namespace Microsoft.AspNetCore.Session
                 {
                     establisher.SetCookie();
                 }
-                return Task.FromResult(0);
+                return TaskCache.CompletedTask;
             }
 
             private void SetCookie()
